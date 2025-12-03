@@ -1,11 +1,13 @@
 package com.example.coolor
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -13,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat
 import yuku.ambilwarna.AmbilWarnaDialog
 
 class InputPage : AppCompatActivity() {
+    @SuppressLint("SetTextI18n", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -27,14 +30,19 @@ class InputPage : AppCompatActivity() {
         val btnGenerate = findViewById<Button>(R.id.btnGenerate)
         val firstColorView = findViewById<View>(R.id.firstColorView)
         val secondColorView = findViewById<View>(R.id.secondColorView)
+        val tvColorOne = findViewById<TextView>(R.id.tvColorOne)
+        val tvColorTwo = findViewById<TextView>(R.id.tvColorTwo)
 
 
         var firstColor = Color.WHITE // to convert to hex: String.format("#%06X", (0xFFFFFF and currentColor))
         var secondColor = Color.WHITE
         firstColorView.setBackgroundColor(firstColor)
         secondColorView.setBackgroundColor(secondColor)
-        var firstColorHex = ""
-        var secondColorHex = ""
+        var firstColorHex = String.format("#%06X", (0xFFFFFF and firstColor))
+        var secondColorHex = String.format("#%06X", (0xFFFFFF and secondColor))
+
+        tvColorOne.text = firstColorHex
+        tvColorTwo.text = secondColorHex
 
         firstColorView.setOnClickListener {
             val colorPicker = AmbilWarnaDialog(this, firstColor, object : AmbilWarnaDialog.OnAmbilWarnaListener {
@@ -46,7 +54,8 @@ class InputPage : AppCompatActivity() {
                     firstColor = color
 
                     firstColorView.setBackgroundColor(color)
-                    firstColorHex = String.format("#%06X", (0xFFFFFF and firstColor))
+                    firstColorHex = String.format("#%06X", (0xFFFFFF and color))
+                    tvColorOne.text = firstColorHex
 
 
                 }
@@ -64,7 +73,8 @@ class InputPage : AppCompatActivity() {
                     secondColor = color
 
                     secondColorView.setBackgroundColor(color)
-                    secondColorHex = String.format("#%06X", (0xFFFFFF and firstColor))
+                    secondColorHex = String.format("#%06X", (0xFFFFFF and color))
+                    tvColorTwo.text = secondColorHex
 
 
                 }

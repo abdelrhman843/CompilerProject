@@ -59,13 +59,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:fontFamily="@font/knewave"
+        android:fontFamily="@font/rougescript"
         android:gravity="center"
         android:text="Hello this is a coolor programming language which have only one expression which is
-\ngenerate PALETTE 6 colors\nor\nMake paLette 9 COLOR\nupper case or lower case will work click get start"
+\ngenerate palette 6 colors\nor\nmake paLette 9 color\nupper case or lower case will work click get start"
         android:textColor="@color/darkblue"
-        android:textSize="14sp"
-        android:textStyle=""
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -84,7 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.40" />
+        app:layout_constraintGuide_percent="0.35" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
