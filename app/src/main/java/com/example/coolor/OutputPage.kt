@@ -29,20 +29,20 @@ class OutputPage : AppCompatActivity() {
         }
 
         fun generateColor(firstColor: Int, secondColor: Int, numberOfColors: Int): MutableList<Int> {
-            var rGab = (secondColor.red - firstColor.red) / (numberOfColors - 1)
-            var gGab = (secondColor.green - firstColor.green) / (numberOfColors - 1)
-            var bGab = (secondColor.blue - firstColor.blue) / (numberOfColors - 1)
+            var rGab = (secondColor.red - firstColor.red).toDouble() / (numberOfColors - 1)
+            var gGab = (secondColor.green - firstColor.green).toDouble() / (numberOfColors - 1)
+            var bGab = (secondColor.blue - firstColor.blue).toDouble() / (numberOfColors - 1)
 
             val colors = mutableListOf<Int>()
-            var r: Int = 0
-            var b: Int = 0
-            var g: Int = 0
+            var r = 0.0
+            var b = 0.0
+            var g = 0.0
             colors.add(firstColor)
             for(i in 1..<numberOfColors){
                 r = firstColor.red + i * rGab
                 g = firstColor.green + i * gGab
                 b = firstColor.blue + i * bGab
-                colors.add(Color.rgb(r, g, b))
+                colors.add(Color.rgb(r.toInt(), g.toInt(), b.toInt()))
             }
             colors.add(secondColor)
 
@@ -109,8 +109,7 @@ class OutputPage : AppCompatActivity() {
 
         for (i in 0..<numberOfColors){
             views[i].setBackgroundColor(colors[i])
-            var hex = String.format("#%06X", (0xFFFFFF and colors[i]))
-            textViews[i].text = hex
+            textViews[i].text = String.format("#%06X", (0xFFFFFF and colors[i]))
         }
 
 
